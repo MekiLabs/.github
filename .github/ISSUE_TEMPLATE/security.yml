@@ -1,0 +1,57 @@
+name: Security
+description: Report a vulnerability or a security problem. Do not paste secrets or personal data.
+title: "[Security] "
+labels: ["security"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not paste** tokens, passwords, keys, signed URLs, dumps, or data about patients, doctors or customers.
+        If you need to show a value, mask it (for example `ana.***@***.cl` or `12.***.***-5`).
+        If you suspect someone is already exploiting it, or that personal data was accessed, also warn the team on the private channel.
+  - type: input
+    id: system
+    attributes:
+      label: Affected system
+      description: Repository, service, endpoint or AWS account.
+      placeholder: "mekidoc · back · POST /route"
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: What an attacker can do
+      description: The impact, in one or two lines.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How to reproduce it
+      description: Steps with test data. No real data and no credentials.
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Estimated severity
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Who found it and how
+      placeholder: "Audit, code review, alert, customer or other"
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I confirm I did not paste secrets or personal data.
+          required: true
